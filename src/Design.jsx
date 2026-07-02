@@ -58,6 +58,11 @@ export default function Design ()
         useEffect((todo)=>{
             localStorage.setItem("todo",JSON.stringify(todo))
         },[todo])
+
+
+
+
+        
     return (
          <TodoProvider value={{todo,addTodo,deleteTodo,toggleTodo,updateTodo}}>
                 <div className="FullBody bg-[#5995ED] w-full h-screen">

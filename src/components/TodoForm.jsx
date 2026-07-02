@@ -18,11 +18,12 @@ export function TodoForm ()
     {/*  Making Todo Form   & Button */}
     
                       
-        <form  className="Form bg-[#7CAFC4] justify-center items-center ">
+        <form onSubmit={add} className="Form bg-[#7CAFC4] justify-center items-center ">
             <input  className="text-4xl text-black "
             type="text"
-            value={""}
+            value={todo}
             placeholder="Add a new Todo"
+            onChange={(e)=>settodo(e.target.value)}
             />
         </form>
     </>)
