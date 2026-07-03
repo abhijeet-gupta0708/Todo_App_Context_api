@@ -8,11 +8,11 @@ export function TodoItem({todo})
     const [istodoeditable,setistodoeditable]=useState(false)
     const [todomessage,settodomessage]=useState(todo.message)
     const [updatetodo,setupdatetodo]=useState(false)
-    const[updateTodo,toggleTodo,deleteTodo]=useTodo(todo)
+    const[updateTodo,toggleTodo,deleteTodo]=useTodo();
 
     const editodo =()=>{
 
-        updateTodo(todo.id,{...todo,todo:message})
+        updateTodo(todo.id,{...todo,message:todomessage})
         setistodoeditable(false)
 
     }
@@ -39,15 +39,14 @@ export function TodoItem({todo})
             {/* InputBox */}
             <input 
             type="text"
-            value={todo.message}
+            value={todomessage}
             placeholder="Enter Task"
             onChange={(e)=>settodomessage(e.target.value)}
-            readOnly={!setistodoeditable}
+            readOnly={!istodoeditable}
             />
 
             {/* Button Formation  */}
             {/* There will be two button 1 ckick save button and other of delete button */}
-
             {/* ADDButton  */}
             <button 
             className=" ADDBUTTON "

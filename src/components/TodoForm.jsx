@@ -5,13 +5,16 @@ export function TodoForm ()
 {
 
     const [todo,settodo]=useState("")
-    const {addtodo}=useTodo
+    const {addtodo}=useTodo()
     const add =(e) =>{
         e.preventDefault()
 
         if(!todo) return
        
-        addtodo({todo,completed:false})
+       addTodo({
+    message: todo,
+    completed: false
+});
         settodo("")
     }
     return (<>

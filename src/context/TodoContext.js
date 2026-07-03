@@ -6,13 +6,14 @@ export const createTodo =createContext ({
     todos:[
         
         {
-            id=Date.now(),
-            message="Todo1",
-            completed=false,
+            id:Date.now(),
+            message:"Todo1",
+            completed:false,
 
 
-         },
-    theme=dark],
+         }
+  ],
+    
 
     addTodo :(todo)=>{},
     updateTodo :(id,todo) => {},
@@ -26,4 +27,4 @@ export const useTodo = () =>{
     return useContext (createTodo)
 }
 
-export const TodoProvider = createTodo.Provider()
+export const TodoProvider = createTodo.Provider;

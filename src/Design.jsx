@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import {TodoProvider} from "./context"
+import { TodoForm } from "./components/TodoForm"
+import { TodoItem } from "./components/TodoItem"
 
 
 export default function Design ()
@@ -46,18 +48,31 @@ export default function Design ()
         {/* Using Local storage to store the List of todos so that List of the task do not disappear everytime gets refreshed  */}
 
 
-        useEffect((todos)=>{
-            const todo =JSON.parse(localStorage.getItem("todo"))
+            useEffect(() => {
+            const raw=localStorage.getItem("todo")
 
-            if(todo && todo.length >0)
+            if(!raw) return
+
+            try
             {
-                settodos(todo)
+            const data = JSON.parse(raw)
+            if(Array.isArray(data))
+            {
+                settodos(data)
             }
-        },[])
+            }
 
-        useEffect((todo)=>{
-            localStorage.setItem("todo",JSON.stringify(todo))
-        },[todo])
+           catch (e)
+           {
+            console.log("Invalid JSON in LocalStorage",e)
+           }
+            
+        }, [])
+
+            useEffect(()=>{
+                const new_data=JSON.stringify(todo)
+                localStorage.setItem("todo",new_data)
+            },[todo])
 
 
 
@@ -73,6 +88,21 @@ export default function Design ()
                         <h1 className="text-6xl text-center bg-[#044389] P-4 
                     border-black border-2 rounded-2xl  "> TODO </h1>
                     </div>
+
+                  
+                  {/* Here goes the Form Part  */}
+                  <TodoForm />
+
+                  {/* Button Goes here  */}
+
+                  <div className="button gap-y-4 mt-4 bg-amber-900">
+                    
+                    {todo.map((todo)=>(
+                        <div key={todo.id}>
+                            <TodoItem todo={todo} />
+                        </div>
+                    ))}
+                  </div>
 
 
 
