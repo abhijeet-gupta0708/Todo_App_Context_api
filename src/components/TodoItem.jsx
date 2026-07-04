@@ -52,13 +52,13 @@ export function TodoItem({todo})
               onClick={() => {
                   if (todo.completed) return;
 
-                  if (isTodoEditable) {
-                      editTodo();
-                  } else setIsTodoEditable((prev) => !prev);
+                  if (istodoeditable) {
+                      editodo();
+                  } else setistodoeditable((prev) => !prev);
               }}
               disabled={todo.completed}
           >
-              {isTodoEditable ? "📁" : "✏️"}
+              {istodoeditable ? "📁" : "✏️"}
           </button>
           {/* Delete Todo Button */}
           <button

@@ -26,22 +26,17 @@ export default function Design ()
             settodos((prev)=> prev.filter((todo)=>todo.id!==id))
         }
     {/* Toggle Todo Function */}
-    const toggleTodo =(id,todo) =>
-        {
-            settodos((prev)=>
-                prev.map((eachval)=>{
-                    if(eachval.id==id)
-                    {
-                        eachval.completed=!(eachval.completed)
-                    }
-                    else
-                    {
-                        todo
-                    }
-                })
-            
-            )
-        }
+   
+
+        const toggleTodo = (id) => {
+    settodos((prev) =>
+        prev.map((item) =>
+            item.id === id
+                ? { ...item, completed: !item.completed }
+                : item
+        )
+    );
+};
 
 
 

@@ -28,4 +28,3 @@ export const useTodo = () =>{
 }
 
 export const TodoProvider = createTodo.Provider;
-export { TodoProvider, useTodo } from "./TodoContext";
