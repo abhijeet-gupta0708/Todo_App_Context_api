@@ -5,10 +5,9 @@ export function TodoForm ()
 {
 
     const [todo,settodo]=useState("")
-    const {addtodo}=useTodo()
+    const {addTodo}=useTodo()
     const add =(e) =>{
         e.preventDefault()
-
         if(!todo) return
        
        addTodo({
@@ -21,13 +20,14 @@ export function TodoForm ()
     {/*  Making Todo Form   & Button */}
     
                       
-        <form onSubmit={add} className="Form bg-[#7CAFC4] justify-center items-center ">
-            <input  className="text-4xl text-black "
+        <form onSubmit={add} className="Form bg-[#7CAFC4] w-full flex flex-row justify-center items-center ">
+            <input  className="text-4xl text-black w-full block "
             type="text"
             value={todo}
             placeholder="Add a new Todo"
             onChange={(e)=>settodo(e.target.value)}
             />
+            <button type="submit" className="bg-[#FCFF4B] rounded-r-lg text-2xl text-black shrink-0 hover:cursor-cell">Add Task</button>
         </form>
     </>)
 }

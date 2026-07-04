@@ -79,7 +79,7 @@ export default function Design ()
 
         
     return (
-         <TodoProvider value={{todo,addTodo,deleteTodo,toggleTodo,updateTodo}}>
+         <TodoProvider value={{todos:todo,addTodo,deleteTodo,toggleTodo,updateTodo}}>
                 <div className="FullBody bg-[#5995ED] w-full h-screen">
 
 
@@ -89,22 +89,25 @@ export default function Design ()
                     border-black border-2 rounded-2xl  "> TODO </h1>
                     </div>
 
-                  
+                  <div className="buttonandform flex flex-row w-full h-fit">
+                    
                   {/* Here goes the Form Part  */}
                   <TodoForm />
 
                   {/* Button Goes here  */}
 
-                  <div className="button gap-y-4 mt-4 bg-amber-900">
+                  <div className="button flex flex-wrap gap-y-4">
+                  {todo.map((todo)=>(
+                    <div key={todo.id}>
+                        <TodoItem todo={todo} />
+                    </div>
+                  ))}
+                     
                     
-                    {todo.map((todo)=>(
-                        <div key={todo.id}>
-                            <TodoItem todo={todo} />
-                        </div>
-                    ))}
                   </div>
 
 
+                  </div>
 
                   
 

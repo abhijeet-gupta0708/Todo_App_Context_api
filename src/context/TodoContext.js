@@ -7,7 +7,7 @@ export const createTodo =createContext ({
         
         {
             id:Date.now(),
-            message:"Todo1",
+            message:"",
             completed:false,
 
 
@@ -28,3 +28,4 @@ export const useTodo = () =>{
 }
 
 export const TodoProvider = createTodo.Provider;
+export { TodoProvider, useTodo } from "./TodoContext";

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useTodo } from "../context"
+import Design from "../Design"
 
 
 
@@ -8,7 +9,7 @@ export function TodoItem({todo})
     const [istodoeditable,setistodoeditable]=useState(false)
     const [todomessage,settodomessage]=useState(todo.message)
     const [updatetodo,setupdatetodo]=useState(false)
-    const[updateTodo,toggleTodo,deleteTodo]=useTodo();
+    const {updateTodo,toggleTodo,deleteTodo}=useTodo()
 
     const editodo =()=>{
 
@@ -45,20 +46,27 @@ export function TodoItem({todo})
             readOnly={!istodoeditable}
             />
 
-            {/* Button Formation  */}
-            {/* There will be two button 1 ckick save button and other of delete button */}
-            {/* ADDButton  */}
-            <button 
-            className=" ADDBUTTON "
-            onClick={ ()=>{
-                if(todo.completed)
-                return
-                if(istodoeditable)
-                    editodo();
-                else
-                    setistodoeditable((prev)=>(!prev))
-            }
-            }>ADD</button>
+           {/* Edit, Save Button */}
+          <button
+              className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
+              onClick={() => {
+                  if (todo.completed) return;
+
+                  if (isTodoEditable) {
+                      editTodo();
+                  } else setIsTodoEditable((prev) => !prev);
+              }}
+              disabled={todo.completed}
+          >
+              {isTodoEditable ? "📁" : "✏️"}
+          </button>
+          {/* Delete Todo Button */}
+          <button
+              className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
+              onClick={() => deleteTodo(todo.id)}
+          >
+              ❌
+          </button>
         </div>
 
             
