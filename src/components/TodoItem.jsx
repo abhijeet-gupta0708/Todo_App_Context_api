@@ -28,13 +28,14 @@ export function TodoItem({todo})
         <>
 
         {/* Making Two Input box one checklist box and another one will be Input box */}
-        <div className="inputformBox">
+        <div className="inputformBox flex flex-row justify-center items-center  ">
 
             {/* CheckBox */}
             <input 
             type="checkbox"
             checked={todo.completed}
             onChange={togglecomplete}
+            className="h-full justify-center items-center text-3xl  p-6 ml-4 md:scale-200 hover:cursor-pointer"
             />
 
             {/* InputBox */}
@@ -44,6 +45,7 @@ export function TodoItem({todo})
             placeholder="Enter Task"
             onChange={(e)=>settodomessage(e.target.value)}
             readOnly={!istodoeditable}
+            className="w-full text-3xl p-4 ml-4"
             />
 
            {/* Edit, Save Button */}

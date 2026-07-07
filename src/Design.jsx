@@ -32,7 +32,7 @@ export default function Design ()
     settodos((prev) =>
         prev.map((item) =>
             item.id === id
-                ? { ...item, completed: !item.completed }
+                ? { ...item, completed:!(item.completed) }
                 : item
         )
     );
@@ -75,23 +75,23 @@ export default function Design ()
         
     return (
          <TodoProvider value={{todos:todo,addTodo,deleteTodo,toggleTodo,updateTodo}}>
-                <div className="FullBody bg-[#5995ED] w-full h-screen">
+                <div className="FullBody bg-[#5995ED] flex flex-col w-full h-screen">
 
 
                   {/* Heading text */}
                     <div className="heading">
                         <h1 className="text-6xl text-center bg-[#044389] P-4 
-                    border-black border-2 rounded-2xl  "> TODO </h1>
+                    border-black border-2 rounded-2xl m-2"> TODO </h1>
                     </div>
 
-                  <div className="buttonandform flex flex-row w-full h-fit">
+                  <div className="buttonandform flex flex-col w-full h-fit gap-4">
                     
                   {/* Here goes the Form Part  */}
                   <TodoForm />
 
                   {/* Button Goes here  */}
 
-                  <div className="button flex flex-wrap gap-y-4">
+                  <div className="button flex flex-col w-full bg-[#ca962f] ">
                   {todo.map((todo)=>(
                     <div key={todo.id}>
                         <TodoItem todo={todo} />
